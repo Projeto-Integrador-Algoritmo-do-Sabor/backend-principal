@@ -4,9 +4,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 
 @Entity
+@Table(name = "tb_pizza")
 public class Pizza {
 
 	@Id
@@ -16,8 +18,8 @@ public class Pizza {
 	@NotBlank(message = "O atributo é obrigatório")
 	private String sabor;
 	
-	@NotBlank(message = "O atributo é obrigatório")
-	private Float valor;
+	
+	private float valor;
 	
 	@NotBlank(message = "O atributo é obrigatório")
 	private String descricao;
@@ -41,11 +43,11 @@ public class Pizza {
 		this.sabor = sabor;
 	}
 
-	public Float getValor() {
+	public float getValor() {
 		return valor;
 	}
 
-	public void setValor(Float valor) {
+	public void setValor(float valor) {
 		this.valor = valor;
 	}
 
@@ -65,5 +67,4 @@ public class Pizza {
 		this.tamanho = tamanho;
 	}
 
-	// Getters e Setters
 }
