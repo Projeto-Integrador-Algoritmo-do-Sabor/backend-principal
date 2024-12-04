@@ -101,7 +101,7 @@ Arquitetura: RESTful API
 - [Kevin Schuab](https://www.linkedin.com/in/kevin-schuab/)
 - [Priscila Soares]()
 - [Rayane Moara](https://www.linkedin.com/in/rayane-moara/)
-- [Sarah Tavares]()
+- [Sarah Tavares](https://www.linkedin.com/in/sarahtavaresl)
 
 
 
