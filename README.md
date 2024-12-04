@@ -99,7 +99,7 @@ Arquitetura: RESTful API
 - [Estafany Santos](https://www.linkedin.com/in/estefany-santos/)
 - [Lucas Matheus](https://www.linkedin.com/in/lucas-matheus-lima/)
 - [Kevin Schuab](https://www.linkedin.com/in/kevin-schuab/)
-- [Priscila Soares]()
+- [Priscila Soares](https://www.linkedin.com/in/priscila-soares-161644111/)
 - [Rayane Moara](https://www.linkedin.com/in/rayane-moara/)
 - [Sarah Tavares](https://www.linkedin.com/in/sarahtavaresl)
 
