@@ -94,7 +94,7 @@ Arquitetura: RESTful API
 
  - Criar interface de usuário para melhorar a experiência do cliente.
 
-### Desenvolvirdo por:
+### Desenvolvido por:
 
 - [Estafany Santos](https://www.linkedin.com/in/estefany-santos/)
 - [Lucas Matheus](https://www.linkedin.com/in/lucas-matheus-lima/)
