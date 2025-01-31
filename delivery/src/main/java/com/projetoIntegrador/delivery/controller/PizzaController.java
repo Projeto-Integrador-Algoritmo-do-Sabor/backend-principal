@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.projetoIntegrador.delivery.model.Pizza;
+import com.projetoIntegrador.delivery.model.Tipo;
 import com.projetoIntegrador.delivery.repository.PizzaRepository;
 
 import jakarta.validation.Valid;
@@ -29,45 +30,50 @@ import jakarta.validation.Valid;
 public class PizzaController {
 
 	@Autowired
-	private PizzaRepository repository;
+	private PizzaRepository pizzaRepository;
 
 	@GetMapping
 	public ResponseEntity<List<Pizza>> getAll() {
-		return ResponseEntity.ok(repository.findAll());
+		return ResponseEntity.ok(pizzaRepository.findAll());
 	}
 
 	@GetMapping("/{id}")
 	public ResponseEntity<Pizza> buscarPorId(@PathVariable Long id) {
-		return repository.findById(id).map(resposta -> ResponseEntity.ok(resposta))
+		return pizzaRepository.findById(id).map(resposta -> ResponseEntity.ok(resposta))
 				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 	}
 
 	@GetMapping("/sabor/{sabor}")
 	public List<Pizza> buscarPorSabor(@PathVariable String sabor) {
-		return repository.findAllBySaborContainingIgnoreCase(sabor);
+		return pizzaRepository.findAllBySaborContainingIgnoreCase(sabor);
+	}
+	
+	@GetMapping("/tipo/{tipo}")
+	public List<Pizza> buscarPorTipo(@PathVariable String tipo) {
+		return pizzaRepository.findByTipoNomeIgnoreCase(tipo);
 	}
 
 	@PostMapping
 	public ResponseEntity<Pizza> criar(@Valid @RequestBody Pizza pizza) {
-		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(pizza));
+		return ResponseEntity.status(HttpStatus.CREATED).body(pizzaRepository.save(pizza));
 	}
 
 	@PutMapping
 	public ResponseEntity<Pizza> atualizar(@Valid @RequestBody Pizza pizza) {
-		return repository.findById(pizza.getId())
-				.map(resposta -> ResponseEntity.status(HttpStatus.OK).body(repository.save(pizza)))
+		return pizzaRepository.findById(pizza.getId())
+				.map(resposta -> ResponseEntity.status(HttpStatus.OK).body(pizzaRepository.save(pizza)))
 				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 	}
 
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	@DeleteMapping("/{id}")
 	public void excluir(@PathVariable Long id) {
-		Optional<Pizza> pizza = repository.findById(id);
+		Optional<Pizza> pizza = pizzaRepository.findById(id);
 
 		if (pizza.isEmpty()) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		}
-		repository.deleteById(id);
+		pizzaRepository.deleteById(id);
 	}
 
 }

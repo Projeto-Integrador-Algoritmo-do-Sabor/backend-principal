@@ -10,5 +10,6 @@ import com.projetoIntegrador.delivery.model.Pizza;
 public interface PizzaRepository extends JpaRepository<Pizza, Long> {
 
 	public List<Pizza> findAllBySaborContainingIgnoreCase(@Param("sabor") String sabor);
+	public List<Pizza> findByTipoNomeIgnoreCase(@Param("nome") String nome);
 
 }
