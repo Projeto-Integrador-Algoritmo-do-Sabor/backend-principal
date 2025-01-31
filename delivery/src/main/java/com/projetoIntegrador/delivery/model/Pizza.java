@@ -1,9 +1,12 @@
 package com.projetoIntegrador.delivery.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 
@@ -17,15 +20,18 @@ public class Pizza {
 
 	@NotBlank(message = "O atributo é obrigatório")
 	private String sabor;
-	
-	
+
 	private float valor;
-	
+
 	@NotBlank(message = "O atributo é obrigatório")
 	private String descricao;
-	
+
 	@NotBlank(message = "O atributo é obrigatório")
 	private String tamanho;
+
+	@ManyToOne
+	@JsonIgnoreProperties("pizza")
+	private Tipo tipo;
 
 	public Long getId() {
 		return id;
@@ -65,6 +71,14 @@ public class Pizza {
 
 	public void setTamanho(String tamanho) {
 		this.tamanho = tamanho;
+	}
+
+	public Tipo getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(Tipo tipo) {
+		this.tipo = tipo;
 	}
 
 }
