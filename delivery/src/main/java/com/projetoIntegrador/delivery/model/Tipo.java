@@ -1,10 +1,13 @@
 package com.projetoIntegrador.delivery.model;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -12,12 +15,13 @@ import jakarta.persistence.Table;
 @Table(name = "tb_tipo")
 public class Tipo {
 
+	@Id
 	private long id;
 	private String nome;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "tipo", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("tipo")
-	private Pizza pizza;
+	private List<Pizza> pizza;
 
 	public long getId() {
 		return id;
@@ -35,11 +39,11 @@ public class Tipo {
 		this.nome = nome;
 	}
 
-	public Pizza getPizza() {
+	public List<Pizza> getPizza() {
 		return pizza;
 	}
 
-	public void setPizza(Pizza pizza) {
+	public void setPizza(List<Pizza> pizza) {
 		this.pizza = pizza;
 	}
 
